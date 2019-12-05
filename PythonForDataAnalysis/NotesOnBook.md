@@ -24,3 +24,15 @@ if not isinstance(x, list) and isiterable(x):
     - strings and tuples are immutable
 - "simple" types are called "scalar types"
     - `int, float, None, str, bool, ...`
+
+### Lists in python
+- list inserts are computationally expensive compared to append
+- using `in` keyword is *slower* for lists than it is for dicts and sets
+- `list1.extend(list2)` is faster than `list1 + list2` as the former extends `list1` and the latter one copies all elements to a new list
+
+
+### Pythonic code snippets
+#### Ternary expressions
+```python
+x = VALUE if CONDITION else VALUE
+```
