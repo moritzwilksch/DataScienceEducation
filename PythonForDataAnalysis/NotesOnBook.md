@@ -36,3 +36,20 @@ if not isinstance(x, list) and isiterable(x):
 ```python
 x = VALUE if CONDITION else VALUE
 ```
+#### `*`-Operator
+- in function header: `def myFun(*a, **kw):` `a` collects all positional arguments in one tuple and `kw` collects all keyword arguments in one dict
+- in function call: `*` _unpacks_ a tuple into positional arguments for the function and `**` unpacks a dictionary into keyword arguments
+```python
+# In function header...
+def functionA(*a, **kw):
+    print(a)
+    print(kw)
+functionA(1, 2, 3, 4, 5, 6, a=2, b=3, c=5)
+# (1, 2, 3, 4, 5, 6)
+# {'a': 2, 'c': 5, 'b': 3}
+
+# ... and in function call
+lis=[1, 2, 3, 4]
+dic={'a': 10, 'b':20}
+functionA(*lis, **dic)  # is similar to functionA(1, 2, 3, 4, a=10, b=20)
+```
