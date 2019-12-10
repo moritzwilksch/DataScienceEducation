@@ -130,5 +130,19 @@ print(np.where(arr % 2 == 0, arr, -1))
 - pandas index objects are **immutable**!
 
 ## Essential Functionality
+### Reindexing
+- `df.reindex(...)` creates new object based on data from df that conforms to the provided index
+- provided index can be index of rows or index of columns
+
+### Indexing, Selection, Filtering
+- As opposed to numpy indexing, one can use labels of the index for Filtering and Slicing
+> **CAUTION:** Slicing with labels **includes** the endpoint!
+- `.loc[...]` enables selection based on labels
+- `.iloc[...]` enables selection based on integers
+
+### Sorting
+- `df.sort_index()` sorts by index (either rows or columns)
+- `df.sort_values()` sorts by values
+
 
 
