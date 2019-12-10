@@ -1,5 +1,5 @@
 
-# Basics
+# Python Basics
 ## Misc python info
 - everything in Python is a python object
 - if functions are attached to an object, they are called methods
@@ -79,3 +79,16 @@ try:
     # Code
 except ValueError, TypeError:
     # Error handling
+```
+
+# Numpy Basics
+> Numpy operations are generally 10 to 100 times faster than their python equivalent!
+## Numpy's USP: ndarray
+- create array with `np.array(SEQUENCE)`
+- `np.arrange()` is the numpy equivalent to the python `range()` function
+- numpy datatypes are {int, float}x{8, 16, 32, 64}
+- Be careful using `np.string_` datatype. It has a fixed length and might truncate values!
+- Any arithmetic operations between equal-size arrays applies the operation element-wise (vectorization)
+- Operation on slices of arrays will affect the original array, as slices are only views!
+    - use `arr.copy()` to explicitly copy values
+
