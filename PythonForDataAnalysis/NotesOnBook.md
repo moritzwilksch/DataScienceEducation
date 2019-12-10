@@ -143,6 +143,3 @@ print(np.where(arr % 2 == 0, arr, -1))
 ### Sorting
 - `df.sort_index()` sorts by index (either rows or columns)
 - `df.sort_values()` sorts by values
-
-
-
