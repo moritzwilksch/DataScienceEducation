@@ -91,4 +91,35 @@ except ValueError, TypeError:
 - Any arithmetic operations between equal-size arrays applies the operation element-wise (vectorization)
 - Operation on slices of arrays will affect the original array, as slices are only views!
     - use `arr.copy()` to explicitly copy values
+- slicing multidimensional arrays
+```python
+arr = np.array([[1,2,3],
+                [4,5,6],
+                [7,8,9]])
+print(arr[:2, 1:])
+# [[2 3]
+# [5 6]]
+```
+- Python keywords `and` and `or` don't work with boolean indexing, use `&` and `|` respectively
+- negate boolean indexing using `~EXPRESSION`
+- "Fancy indexing": Using list of indexes to obtain elements at these indecies
+> Fancy indexing always copies data, slicing DOES NOT!
+
+## Universal Functions (ufuncs)
+- fast (vectorized) element-wise execution of function
+- **unary** functions: `np.sqrt(a), np.exp(a)``
+- **binary** functions: `np.maximum(a,b)
+- `.cumsum()` and `.cumprod` return array of intermediate steps
+- `np.where(CONDITION, [VALUEifTRUE], [VALUEifFalse])`
+```python
+arr = np.array(range(10,20))
+print(np.where(arr % 2 == 0, arr, -1))
+#[10 -1 12 -1 14 -1 16 -1 18 -1]
+```
+- `np.save()` and `np.load()` can be used to save arrays to disk in raw binary format (.npy) 
+
+
+# Getting started with pandas
+
+
 
