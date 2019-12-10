@@ -1,11 +1,11 @@
 
 # Python Basics
-## Misc python info
+## Misc Python Info
 - everything in Python is a python object
 - if functions are attached to an object, they are called methods
 
 
-## Values and argument passing
+## Values and Argument Passing
 ```python
 a = [1,2,3]
 b = a
@@ -14,7 +14,7 @@ print(b) # [1,2,3,4]
 ```
 
 
-## Typing in python
+## Typing in Python
 - `isinstance()` and `isiterable()` are useful functions...
 ```python
 if not isinstance(x, list) and isiterable(x):
@@ -25,14 +25,14 @@ if not isinstance(x, list) and isiterable(x):
 - "simple" types are called "scalar types"
     - `int, float, None, str, bool, ...`
 
-## Lists in python
+## Lists in Python
 - list inserts are computationally expensive compared to append
 - using `in` keyword is *slower* for lists than it is for dicts and sets
 - `list1.extend(list2)` is faster than `list1 + list2` as the former extends `list1` and the latter one copies all elements to a new list
 
 
-# Pythonic code snippets
-## Ternary expressions
+# Pythonic Code Snippets
+## Ternary Expressions
 ```python
 x = VALUE if CONDITION else VALUE
 ```
@@ -65,15 +65,15 @@ gen = squares(15)
 for x in gen:
     print(x)
 ```
-# Error handling in python
-## General structure
+# Error Handling in Python
+## General Structure
 ```python
 try:
     # Code
 except:
     # Error handling
 ```
-### Catching specific errors
+### Catching Specific Errors
 ```python
 try:
     # Code
@@ -119,7 +119,16 @@ print(np.where(arr % 2 == 0, arr, -1))
 - `np.save()` and `np.load()` can be used to save arrays to disk in raw binary format (.npy) 
 
 
-# Getting started with pandas
+# Getting Started with pandas
+## Basics
+- As with numpy arrays, indexed rows or columns are views on the df, so modifications will alter the original object
 
+### The Index
+- As opposed to numpy, the index of a Series or DataFrame can be labels, not only numbers
+- The index stores axis names 
+- Series can be interpreted as a dictionary-like key-value-mapping from index to data value
+- pandas index objects are **immutable**!
+
+## Essential Functionality
 
 
