@@ -1,4 +1,12 @@
-import numpy as np
-arr = np.array(range(10,20))
-print(np.where(arr % 2 == 0, arr, -1))
-print(np.any(arr > 20))
+# %%
+import pandas as pd
+import requests
+url = 'https://api.github.com/repos/pandas-dev/pandas/issues'
+resp = requests.get(url)
+data = pd.DataFrame(resp.json())
+
+# %%
+pd.read_json(url)
+
+
+# %%

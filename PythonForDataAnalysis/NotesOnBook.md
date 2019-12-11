@@ -143,3 +143,22 @@ print(np.where(arr % 2 == 0, arr, -1))
 ### Sorting
 - `df.sort_index()` sorts by index (either rows or columns)
 - `df.sort_values()` sorts by values
+
+## Data Loading, Storage and File Formats
+### Loading and Saving
+- `pd.read_csv(...)` has over 50 possible parameters such as separator, header, null_values, ...
+- Python has a standard library called `json` to import and export python objects as json
+- pandas' `.read_json(...)` assumes that each object in the json-array is a row in th DataFrame
+- HDF5-Format is especially suited for large datasets that don't fit into memory 
+
+### Interacting with web APIs
+- use the python `requests`-package
+```python
+import pandas as pd
+import requests
+url = 'https://api.github.com/repos/pandas-dev/pandas/issues'
+resp = requests.get(url)
+data = pd.DataFrame(resp.json())
+# ODER:
+pd.read_json(url)
+```
