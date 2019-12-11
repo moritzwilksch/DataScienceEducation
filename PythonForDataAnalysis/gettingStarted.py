@@ -10,3 +10,10 @@ pd.read_json(url)
 
 
 # %%
+import seaborn as sns
+df = sns.load_dataset("titanic")
+df.groupby(["pclass", "sex"])["age"].mean()
+df["age"] = df["age"].fillna(df.groupby(["pclass", "sex"])["age"].transform("mean"))
+
+
+# %%

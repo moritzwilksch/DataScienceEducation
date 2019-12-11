@@ -56,7 +56,7 @@ functionA(*lis, **dic)  # is similar to functionA(1, 2, 3, 4, a=10, b=20)
 
 ## Generator Object
 - A generator is a concise way to create a new iterable
-- Generators return results laizly as they are needed (use `yield` instead of `return` inside function)
+- Generators return results lazily as they are needed (use `yield` instead of `return` inside function)
 ```python
 def squares(n):
     for i in range(n):
@@ -149,8 +149,10 @@ print(np.where(arr % 2 == 0, arr, -1))
 - `pd.read_csv(...)` has over 50 possible parameters such as separator, header, null_values, ...
 - Python has a standard library called `json` to import and export python objects as json
 - pandas' `.read_json(...)` assumes that each object in the json-array is a row in th DataFrame
-- HDF5-Format is especially suited for large datasets that don't fit into memory 
-
+- HDF5-Format is especially suited for large datasets that don't fit into memory
+- There are many python-SQL-drivers available, most of which return a list of tuples when executing a query
+    - Column names must be provided manually when working with tuples
+    - SLQAlchemy is a library that provides an abstract layer and can easily be used with DataFrames
 ### Interacting with web APIs
 - use the python `requests`-package
 ```python
@@ -162,3 +164,35 @@ data = pd.DataFrame(resp.json())
 # ODER:
 pd.read_json(url)
 ```
+
+# Data Cleaning and Preparation
+## Missing Data
+Example of using fillna(...) with groupby:
+```python
+import seaborn as sns
+df = sns.load_dataset("titanic")
+# Show table of groups with mean of age:
+df.groupby(["pclass", "sex"])["age"].mean()
+
+# Fill NAs by group
+df["age"] = df["age"].fillna(df.groupby(["pclass", "sex"])["age"].transform("mean"))
+```
+=> one needs to use `.transform("mean")` instead of `.mean()`, because transform returns the whole series of ages (891 in this case), not just shows the 6 groups.
+
+## Data Transformation
+### General and String Operations
+- `.duplicated()` returns boolean array showing whether a row has been observed before (aka is duplicated)
+- String methods can be applied to whole columns: `df["a"].str.lower()`
+- `.map(DICT)` is a helpful tool for data transformation
+
+### Renaming Axis Indexes
+- like values, indexes can be alterd too, e.g. by using `df.index = df.index.map(FUNC)`
+- To rename indexes inplace use `df.rename(DICT, inplace=True)`
+
+### Numeric Transformations
+- use `pd.cut(Series, ListOfBins)` to cut Series into bins
+    - you can pass `labels=[...]` or use `.qcut(...)` to cut into quartiles
+
+### Detecting and Filtering Outliers
+
+
