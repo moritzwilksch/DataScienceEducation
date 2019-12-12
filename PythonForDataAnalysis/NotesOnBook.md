@@ -194,5 +194,35 @@ df["age"] = df["age"].fillna(df.groupby(["pclass", "sex"])["age"].transform("mea
     - you can pass `labels=[...]` or use `.qcut(...)` to cut into quartiles
 
 ### Detecting and Filtering Outliers
+- `np.sign(df)` produces -1 for negative values and 1 for positive values (useful for z-values)
+- `df.sample(n=...` takes random sample **without replacement**
+    - for replacements pass `replace=True` as additional parameter
 
+### Dummy Variables
+- `df1.join(df2)` can combine two DataFrames
+```python
+catcols = df.select_dtypes("category").columns
+dummies = pd.get_dummies(df[catcols])
+df.join(dummies)
+```
 
+### String Operations
+```python
+s = "Doe, John"
+words = s.split(",") # ["Doe", " John"]
+words = [w.strip() for w in words]
+name = "::".join(words) # 'Doe::John'
+name.index("J") # 5
+name.find("XX") # -1
+name.count(":") # 2
+name.replace("::", "<br>") #'Doe<br>John'
+```
+=> `.index(...)` throws exception when element is not found, `.find(...)` returns `-1`
+
+### Regular Expressions
+- import regex module `import re``
+- if used multiple times, manually compile the regular expression to save CPU time: `re.compile("REGEX")`
+- regex objects have a `.findall(SOURCE)` method
+- `re.match(...)` can contain groups (such as name, domain, and TLD of an email address)
+- pandas string methods are available via `SERIES.str.METHOD`
+- p217/218???
