@@ -33,6 +33,7 @@ name.replace("::", "<br>") #'Doe<br>John'
 data.head()
 
 # %%
-ma = data["body"].str.match("Code")
+ma = data["body"].str.match(".*Code.*")
+ma
 
 # %%

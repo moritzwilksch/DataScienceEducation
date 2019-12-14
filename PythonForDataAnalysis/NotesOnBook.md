@@ -220,7 +220,7 @@ name.replace("::", "<br>") #'Doe<br>John'
 => `.index(...)` throws exception when element is not found, `.find(...)` returns `-1`
 
 ### Regular Expressions
-- import regex module `import re``
+- import regex module `import re`
 - if used multiple times, manually compile the regular expression to save CPU time: `re.compile("REGEX")`
 - regex objects have a `.findall(SOURCE)` method
 - `re.match(...)` can contain groups (such as name, domain, and TLD of an email address)
