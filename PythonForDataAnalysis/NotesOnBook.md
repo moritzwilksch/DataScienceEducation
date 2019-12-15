@@ -225,4 +225,20 @@ name.replace("::", "<br>") #'Doe<br>John'
 - regex objects have a `.findall(SOURCE)` method
 - `re.match(...)` can contain groups (such as name, domain, and TLD of an email address)
 - pandas string methods are available via `SERIES.str.METHOD`
-- p217/218???
+
+# Data 
+## Hierarchical Indexing
+- allows to work with higher dimentional data in a low-dimensional form
+- example: outer level = [a,b,c], inner level = 1,2,3
+    - inner level can be accesed by using `data.loc[:,2]`
+    - or via `data.xs("2", level=1)`
+- multi-level indexes can be unstacked (and then stacked again)
+- `df.sort_index` sorts the index which *increases data selection performance*
+
+## Combining and Merging
+- `pd.merge()` connects rows based on key (like SQL join)
+- `pd.concat()` concatenates or stacks elements along an axis
+- use `df.combine_first(...)` to combine data with overlap
+
+## Reshaping and Pivoting
+
