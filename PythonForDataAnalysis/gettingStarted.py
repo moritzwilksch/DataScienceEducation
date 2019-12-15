@@ -42,7 +42,7 @@ name.replace("::", "<br>") #'Doe<br>John'
 # # Regular Expressions
 # %%
 data.head()
-ma = data["body"].str.findall("( .ample )+")
+ma = data["body"].str.findall(".*Code.*")
 ma
 
 # %% [markdown]
