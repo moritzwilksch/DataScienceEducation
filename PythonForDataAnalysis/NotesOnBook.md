@@ -241,4 +241,4 @@ name.replace("::", "<br>") #'Doe<br>John'
 - use `df.combine_first(...)` to combine data with overlap
 
 ## Reshaping and Pivoting
-
+tbc p 249
