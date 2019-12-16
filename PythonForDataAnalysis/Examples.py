@@ -6,7 +6,7 @@ import pandas as pd
 import requests
 import seaborn as sns
 import matplotlib.pyplot as plt
-
+import numpy as np
 # %% [markdown]
 # # Requests from URL
 # ## Fetching Data
@@ -95,7 +95,9 @@ sns.distplot(df.total_bill, ax=ax[0,0])
 sns.distplot(df.tip, ax=ax[0,1])
 ax[0,0].text(20, 0.04, "Hello world!")
 
+# %% [markdown]
+# # Grouping and Aggregating
 # %%
-
+df.groupby("sex").agg(np.var)
 
 # %%

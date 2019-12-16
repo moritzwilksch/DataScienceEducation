@@ -275,3 +275,24 @@ name.replace("::", "<br>") #'Doe<br>John'
 - seaborn's factor plot is a nice simple alternative to the Facetgrid
 
 # Data Aggregation and Grouping
+## Split-Apply-Combine
+- Split data into groups by one or more keys
+- Apply some kind of function to every group
+- Combine results back together
+
+## Groupby
+- groupby-object is iterable and returns (name, data) tuples
+- groupby can be called using a function as a key. The function will be executed once per index and the results will be used as group names
+
+## Data Aggregation
+= mapping dataset to a scalar value
+- `df.groupby(...).agg(...)`
+- apply-function is more versatile
+
+## Pivot tables
+- `pd.pivot_table` supports a `fill_value` for NAs and `margins` attribute for subtotals
+- crosstab = special pivot table for group counts
+
+# Time Series Data
+
+
