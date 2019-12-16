@@ -293,6 +293,10 @@ name.replace("::", "<br>") #'Doe<br>John'
 - `pd.pivot_table` supports a `fill_value` for NAs and `margins` attribute for subtotals
 - crosstab = special pivot table for group counts
 
-# Time Series Data
+# Timeseries Data
+## Date and Time utilities
+- python `datetime` library offers `datetime` and `timedelta` object
 
+## Timeseries in pandas
+- you can resample an irregular frequency timeseries calling `df.resample('D')` (for daily level)
 
