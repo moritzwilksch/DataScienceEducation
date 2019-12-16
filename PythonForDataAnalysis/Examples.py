@@ -87,6 +87,13 @@ ax[0,0].set_xticks([20, 40])
 ax[0,0].set_xticklabels(["zwanzig", "vierzig"])
 plt.show()
 
+# %% [markdown]
+# ## Annotating Plots
+# %%
+fig, ax = plt.subplots(2,2)
+sns.distplot(df.total_bill, ax=ax[0,0])
+sns.distplot(df.tip, ax=ax[0,1])
+ax[0,0].text(20, 0.04, "Hello world!")
 
 # %%
 

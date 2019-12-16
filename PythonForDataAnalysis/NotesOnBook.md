@@ -245,7 +245,7 @@ name.replace("::", "<br>") #'Doe<br>John'
 - `pd.melt(...)` melts columns into additional rows
 
 # Plotting and Visualization
-## Intro to Matplotlib
+## Intro to Matplotlib - Figures and Subplots
 - plots reside inside a figure object 
     - `fig = plt.figure()`
 - figures can contain multiple subplots
@@ -267,5 +267,11 @@ name.replace("::", "<br>") #'Doe<br>John'
     ax[0,0].set_xticks([20, 40])
     ax[0,0].set_xticklabels(["zwanzig", "vierzig"])
     ```
+## Annotations
+- use `.text(x,y,"...")` on a subplot to add a text
+- use `.annotate(...)` on a subplto for more advanced annotations
 
+## Seaborn
+- seaborn's factor plot is a nice simple alternative to the Facetgrid
 
+# Data Aggregation and Grouping
