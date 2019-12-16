@@ -5,6 +5,7 @@
 import pandas as pd
 import requests
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 # %% [markdown]
 # # Requests from URL
@@ -58,5 +59,36 @@ categories = pd.DataFrame({
 })
 m = pd.merge(items, categories, how="left")
 m
+
+# %% [markdown]
+# # Matplotlib
+# %%
+df = sns.load_dataset("tips")
+
+
+# %% [markdown]
+# ## Figure and Axes
+# %%
+fig = plt.figure()
+ax1 = fig.add_subplot(2,2,1)
+ax2 = fig.add_subplot(2,2,2)
+ax3 = fig.add_subplot(2,2,3)
+ax4 = fig.add_subplot(2,2,4)
+ax1 = sns.distplot(df.total_bill)
+plt.show()
+
+# Better:
+fig, ax = plt.subplots(2,2)
+sns.distplot(df.total_bill, ax=ax[0,0])
+sns.distplot(df.tip, ax=ax[0,1])
+
+
+ax[0,0].set_xticks([20, 40])
+ax[0,0].set_xticklabels(["zwanzig", "vierzig"])
+plt.show()
+
+
+# %%
+
 
 # %%

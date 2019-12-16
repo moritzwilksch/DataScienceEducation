@@ -226,7 +226,7 @@ name.replace("::", "<br>") #'Doe<br>John'
 - `re.match(...)` can contain groups (such as name, domain, and TLD of an email address)
 - pandas string methods are available via `SERIES.str.METHOD`
 
-# Data 
+# Data Wrangling
 ## Hierarchical Indexing
 - allows to work with higher dimentional data in a low-dimensional form
 - example: outer level = [a,b,c], inner level = 1,2,3
@@ -241,4 +241,31 @@ name.replace("::", "<br>") #'Doe<br>John'
 - use `df.combine_first(...)` to combine data with overlap
 
 ## Reshaping and Pivoting
-tbc p 249
+- see stack/unstack above
+- `pd.melt(...)` melts columns into additional rows
+
+# Plotting and Visualization
+## Intro to Matplotlib
+- plots reside inside a figure object 
+    - `fig = plt.figure()`
+- figures can contain multiple subplots
+    - `ax1 = fig.add_subplot(2,2,1)`
+    - => the figure now has 2x2 subplots and we're selecting the first one (count starts at one)
+- for convenience, `plt.subplots(...)` returns figure and array of subplots
+    - `fig, ax = plt.subplots(2,2)`
+    ```python
+    fig, ax = plt.subplots(2,2)
+    sns.distplot(df.total_bill, ax=ax[0,0])
+    sns.distplot(df.tip, ax=ax[0,1])
+    plt.show()
+    ```
+    - `plt.subplots(...)` can also take a dictionary of keyword arguments for the subplots
+- use `plt.subplots_adjust(...)` to adjust spacing between plots
+- for each subplot `.set_xticks(...)` can be used to set the xticks that are supposed to be visible
+- for each subplot `.set_xticklabels(...)` can be used to set the xtick labels
+    ```python
+    ax[0,0].set_xticks([20, 40])
+    ax[0,0].set_xticklabels(["zwanzig", "vierzig"])
+    ```
+
+
