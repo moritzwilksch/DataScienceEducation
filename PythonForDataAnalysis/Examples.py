@@ -90,6 +90,27 @@ ax[0, 0].set_xticklabels(["zwanzig", "vierzig"])
 plt.show()
 
 # %% [markdown]
+# ## Example: Subplots and Styling
+# %%
+HIST_STYLE = {"alpha": 0.2}
+
+sns.set_palette("bright")
+fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
+sns.distplot(df.tip, ax=ax[0], hist_kws=HIST_STYLE)
+tips = np.array([df.tip.sample(50, replace=True).mean() for i in range(1000)])
+perfect = np.random.normal(loc=tips.mean(), scale=tips.std(), size=1000)
+sns.distplot(tips, ax=ax[1], hist_kws=HIST_STYLE)
+ax[0].set_title("Distribution of tip", size=16)
+ax[1].set_title("Distribution of mean of tip\n(sample size = 50)", size=16)
+ax[0].set_yticks([])
+ax[0].set_xlabel("Tip in USD", size=16)
+ax[1].set_xlabel("Sampled means of in USD", size=16)
+ax[1].set_yticks([])
+sns.distplot(perfect, ax=ax[1], hist=False,
+             label="Normal Distribution with same mean & std")
+plt.show()
+
+# %% [markdown]
 # ## Annotating Plots
 # %%
 fig, ax = plt.subplots(2, 2)
@@ -102,8 +123,3 @@ ax[0, 0].text(20, 0.04, "Hello world!")
 # %%
 df.groupby("sex").agg(np.var)
 
-
-# %%
-
-
-# %%

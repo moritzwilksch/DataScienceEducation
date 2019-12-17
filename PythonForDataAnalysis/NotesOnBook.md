@@ -299,4 +299,17 @@ name.replace("::", "<br>") #'Doe<br>John'
 
 ## Timeseries in pandas
 - you can resample an irregular frequency timeseries calling `df.resample('D')` (for daily level)
+- `.rolling(...)` enables moving window calculations
 
+# Advanced Pandas
+## Categoricals
+- Categoricals are internally represented as integers and then mapped to category names
+    - `.cat.codes` shows these codes, `.cat.categories` shows names
+    - another `.cat`-method: `.cat.remove_unused_categories()`
+- Categoricals are far more efficient and use less memory!
+
+## Advanced Grouping and Transforming
+- `.transform(...)` and `.apply(...)` are pretty similar, but for the transform function the result must be the same size as the input
+- pandas `.assign(...)` and `.pipe(...)` methods help with method chaining
+
+# The End
