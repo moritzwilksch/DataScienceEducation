@@ -2,11 +2,12 @@
 # # Imports
 
 # %%
+import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import requests
 import seaborn as sns
-import matplotlib.pyplot as plt
-import numpy as np
+
 # %% [markdown]
 # # Requests from URL
 # ## Fetching Data
@@ -25,19 +26,20 @@ pd.read_json(url)
 # %%
 df = sns.load_dataset("titanic")
 df.groupby(["pclass", "sex"])["age"].mean()
-df["age"] = df["age"].fillna(df.groupby(["pclass", "sex"])["age"].transform("mean"))
+df["age"] = df["age"].fillna(df.groupby(["pclass", "sex"])[
+                             "age"].transform("mean"))
 
 # %% [markdown]
 # # String Operations
 # %%
 s = "Doe, John"
-words = s.split(",") # ["Doe", " John"]
+words = s.split(",")  # ["Doe", " John"]
 words = [w.strip() for w in words]
-name = "::".join(words) # 'Doe::John'
-name.index("J") # 5
-name.find("XX") # -1
-name.count(":") # 2
-name.replace("::", "<br>") #'Doe<br>John'
+name = "::".join(words)  # 'Doe::John'
+name.index("J")  # 5
+name.find("XX")  # -1
+name.count(":")  # 2
+name.replace("::", "<br>")  # 'Doe<br>John'
 
 # %% [markdown]
 # # Regular Expressions
@@ -70,34 +72,35 @@ df = sns.load_dataset("tips")
 # ## Figure and Axes
 # %%
 fig = plt.figure()
-ax1 = fig.add_subplot(2,2,1)
-ax2 = fig.add_subplot(2,2,2)
-ax3 = fig.add_subplot(2,2,3)
-ax4 = fig.add_subplot(2,2,4)
+ax1 = fig.add_subplot(2, 2, 1)
+ax2 = fig.add_subplot(2, 2, 2)
+ax3 = fig.add_subplot(2, 2, 3)
+ax4 = fig.add_subplot(2, 2, 4)
 ax1 = sns.distplot(df.total_bill)
 plt.show()
 
 # Better:
-fig, ax = plt.subplots(2,2)
-sns.distplot(df.total_bill, ax=ax[0,0])
-sns.distplot(df.tip, ax=ax[0,1])
+fig, ax = plt.subplots(2, 2)
+sns.distplot(df.total_bill, ax=ax[0, 0])
+sns.distplot(df.tip, ax=ax[0, 1])
 
 
-ax[0,0].set_xticks([20, 40])
-ax[0,0].set_xticklabels(["zwanzig", "vierzig"])
+ax[0, 0].set_xticks([20, 40])
+ax[0, 0].set_xticklabels(["zwanzig", "vierzig"])
 plt.show()
 
 # %% [markdown]
 # ## Annotating Plots
 # %%
-fig, ax = plt.subplots(2,2)
-sns.distplot(df.total_bill, ax=ax[0,0])
-sns.distplot(df.tip, ax=ax[0,1])
-ax[0,0].text(20, 0.04, "Hello world!")
+fig, ax = plt.subplots(2, 2)
+sns.distplot(df.total_bill, ax=ax[0, 0])
+sns.distplot(df.tip, ax=ax[0, 1])
+ax[0, 0].text(20, 0.04, "Hello world!")
 
 # %% [markdown]
 # # Grouping and Aggregating
 # %%
 df.groupby("sex").agg(np.var)
+
 
 # %%
