@@ -104,3 +104,6 @@ df.groupby("sex").agg(np.var)
 
 
 # %%
+
+
+# %%
