@@ -18,6 +18,17 @@
 
 # Introduction to Numpy
 ## Python vs. Numpy
-- python datatypes (like an int) are just cleverly disguised C datatypes with some overhead
+- python datatypes (like an int) are just cleverly disguised C-datatypes with some overhead
 - numpys fixed datatype arrays save overhead
-tbc p 40
+
+## Numpy Arrays
+### Attributes
+```python
+a = np.array([[1,2,5], [10, 20, 50]])
+print(a.ndim) # 2
+print(a.size) # 6
+print(a.shape) # (2, 3)
+```
+### Slicing
+- works just like stock python (index, negative index, etc.)
+- multiple dimensions can be accessed via index-tuple: `print(a[0, 2])`
