@@ -11,6 +11,7 @@ This repo contains notes on various books and courses about Data Science and Mac
 - Udemy: 365 Carreers: Complete Data Science Course 2019
 - Python Machine Learning
 - Udemy: Soledad Galli - Feature Engineering
+- Udemy: Soledad Galli - Feature Selection
 - Practical Statistics for Data Scientists (New version 06/2020)
 - Think Bayes (>= Chapter 5)
 - Feature Engineering for ML (NLP heavy) Book
