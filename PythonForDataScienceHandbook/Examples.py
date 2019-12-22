@@ -1,3 +1,6 @@
+import numpy as np
+
+
 # %% [markdown]
 # # iPython Magic Commands
 # ## Measuring Runtime
@@ -29,5 +32,13 @@ print("hi")
 """
 
 
-# %%
+# %% [markdown]
+# # Numpy
+# ## Numpy Array Attributes
 
+# %%
+a = np.array([[1,2,5], [10, 20, 50]])
+print(a.ndim)
+print(a.size)
+print(a.shape)
+print(a[0, 2])
