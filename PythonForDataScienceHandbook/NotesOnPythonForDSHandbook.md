@@ -32,3 +32,21 @@ print(a.shape) # (2, 3)
 ### Slicing
 - works just like stock python (index, negative index, etc.)
 - multiple dimensions can be accessed via index-tuple: `print(a[0, 2])`
+- Example: Reverse in every dimension
+```python
+arr = np.array([[1,2,3],
+                [4,5,6]])
+arr[::-1, ::-1]
+# array([[6, 5, 4],
+#        [3, 2, 1]])
+```
+- Slicing returns view, `.copy()` creates real copy
+
+## UFuncs
+- `np.multiply.reduce(x)` for reducing array
+- `np.multiply.accumulate(x)` for storing intermediate steps of reduction
+- for each function (e.g. `np.mean()`) numpy provides an NaN-Safe version: `np.nanmean()``
+- Broadcasting enables calculation between not equally-sized arrays (like scalar numerical operations)
+
+## Comparison, Masks, Boolean Logic
+tbc p70

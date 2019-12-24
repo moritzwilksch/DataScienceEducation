@@ -1,3 +1,4 @@
+# %%
 import numpy as np
 
 
@@ -42,3 +43,11 @@ print(a.ndim)
 print(a.size)
 print(a.shape)
 print(a[0, 2])
+
+# %% [markdown]
+# ## Slicing in all Dimensions
+
+# %%
+arr = np.array([[1,2,3],
+                [4,5,6]])
+arr[::-1, ::-1]
