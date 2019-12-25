@@ -42,11 +42,21 @@ arr[::-1, ::-1]
 ```
 - Slicing returns view, `.copy()` creates real copy
 
-## UFuncs
+### UFuncs
 - `np.multiply.reduce(x)` for reducing array
 - `np.multiply.accumulate(x)` for storing intermediate steps of reduction
 - for each function (e.g. `np.mean()`) numpy provides an NaN-Safe version: `np.nanmean()``
 - Broadcasting enables calculation between not equally-sized arrays (like scalar numerical operations)
 
-## Comparison, Masks, Boolean Logic
-tbc p70
+### Comparison, Masks, Boolean Logic
+- boolean arrays can be used as mask
+- one can also check if there are any/only `True` values: `.any()` or `.all()`
+- Boolean operators on arrays **MUST** be the python **bitwise** operators:
+    - AND: `&`
+    - OR: `|`
+    - NOT: `~`
+    - XOR: `^`
+
+### Other Numpy Array Stuff
+- *Structured* arrays and *Record* arrays can store multiple data types
+- Record arrays allow column access via an attribute, not only via dictionary key
