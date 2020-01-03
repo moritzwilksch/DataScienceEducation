@@ -51,3 +51,9 @@ print(a[0, 2])
 arr = np.array([[1,2,3],
                 [4,5,6]])
 arr[::-1, ::-1]
+
+# %% [markdown]
+# # Pandas
+# %%
+import pandas as pd
+s = pd.Series([1,2,3])

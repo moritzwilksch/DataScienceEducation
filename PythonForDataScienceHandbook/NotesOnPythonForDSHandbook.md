@@ -60,3 +60,15 @@ arr[::-1, ::-1]
 ### Other Numpy Array Stuff
 - *Structured* arrays and *Record* arrays can store multiple data types
 - Record arrays allow column access via an attribute, not only via dictionary key
+
+# Pandas
+## Basics
+- Pandas Series are generalized NumPy arrays: They have an explicit index
+- Pandas Series can be thought of as *specialized dictionaries* but the single type makes them more efficient
+
+## Data Frames
+- Data Frames can also be thought of as 2-dimensional numpy arrays
+    - rows are indexed by df.index
+    - columns are indexed by df.columns
+###  The Index
+- index structure can be thought of as *immutable array* or *ordered set*
