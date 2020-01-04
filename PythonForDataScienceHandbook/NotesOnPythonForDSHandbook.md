@@ -72,3 +72,12 @@ arr[::-1, ::-1]
     - columns are indexed by df.columns
 ###  The Index
 - index structure can be thought of as *immutable array* or *ordered set*
+- when slicing with an explicit index, the final element is **included**
+    - when slicing with an implicit index, **it is not.**
+- `.loc`, `.iloc` and `.ix` are special *indexer attributes* to make clear which index (explicit = `.loc`, implicit = `.iloc`) you are using
+- `.ix` is a hybrid of these two
+
+## Operations on Data Frames
+- using ufuncs with pandas preserves/aligns index 
+
+tbc p130
