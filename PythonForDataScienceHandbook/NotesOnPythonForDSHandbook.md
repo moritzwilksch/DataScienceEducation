@@ -77,7 +77,22 @@ arr[::-1, ::-1]
 - `.loc`, `.iloc` and `.ix` are special *indexer attributes* to make clear which index (explicit = `.loc`, implicit = `.iloc`) you are using
 - `.ix` is a hybrid of these two
 
-## Operations on Data Frames
+### Multiindex
+- Can be created by using tuples as dict-keys for creating a data frame
+- can be stacked and unstacked
+- `.reset_index()` turns index labels into columns
+    - the opposite is `.set_index([cols])` which uses `cols` as indeces.
+
+### Operations on Data Frames
 - using ufuncs with pandas preserves/aligns index 
 
-tbc p130
+## Combining Datasets
+- by default, *concatenation* takes place row-wise
+- join is just a merge on index. Therefore, merge is more versatile
+
+# Split-Apply-Combine
+## Groupby
+- using `.aggregate(...)` on a groupby object can aggregate by multiple functions or specific functions per column
+=> Aggregate returns a reduce version of the data, `.transform(...)` returns the long version (same shape as input)
+
+tbc p167
