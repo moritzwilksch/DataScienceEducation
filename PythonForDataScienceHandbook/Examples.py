@@ -57,3 +57,14 @@ arr[::-1, ::-1]
 # %%
 import pandas as pd
 s = pd.Series([1,2,3])
+
+# %%
+import pandas as pd
+import numpy as np
+import seaborn as sns
+df = sns.load_dataset("titanic")
+f = pd.qcut(df.fare, 2)
+pd.pivot_table(data=df, index=["sex", f], margins=True)
+
+# %%
+np.percentile(df.age.dropna(), [10, 50, 90])

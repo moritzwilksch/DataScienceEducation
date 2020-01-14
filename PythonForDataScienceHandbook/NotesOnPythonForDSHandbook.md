@@ -94,5 +94,21 @@ arr[::-1, ::-1]
 ## Groupby
 - using `.aggregate(...)` on a groupby object can aggregate by multiple functions or specific functions per column
 => Aggregate returns a reduce version of the data, `.transform(...)` returns the long version (same shape as input)
+- pandas can group by dictionary:
+```python
+df.groupby({'A': 'vowel', 'B': 'consonant', 'C': 'consonant'}).sum()
+```
+|           | d1| d2|
+|    ---    |---|---|
+|consonant  | 12| 19|
+|vowel      |  3|  8|
 
-tbc p167
+- pandas can group by any **function** that gets index as input and outputs group
+
+## Pivot Tables
+- in pivot tables, one can slica by cutted data:
+```python
+age = pd.cut(titanic['age'], [0, 18, 80])
+titanic.pivot_table('survived', ['sex', age], 'class')
+```
+tbc p183
