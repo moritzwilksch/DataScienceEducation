@@ -111,4 +111,8 @@ df.groupby({'A': 'vowel', 'B': 'consonant', 'C': 'consonant'}).sum()
 age = pd.cut(titanic['age'], [0, 18, 80])
 titanic.pivot_table('survived', ['sex', age], 'class')
 ```
-tbc p183
+## Indicator Variables
+- `.str.get_dummies(SPLITCHAR)` is also a valid getdummies call
+
+# Time Series
+tbc p.188

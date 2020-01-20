@@ -68,3 +68,12 @@ pd.pivot_table(data=df, index=["sex", f], margins=True)
 
 # %%
 np.percentile(df.age.dropna(), [10, 50, 90])
+
+# %%
+s = "3 Tbsp Flour\n 2oz flour\n Sugar"
+d = list(s.split("\n"))
+d = [x.strip() for x in d]
+print(d)
+import re
+r = re.compile("[0-9]+")
+[(r.findall(x), x) for x in d]
