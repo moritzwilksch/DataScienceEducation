@@ -115,4 +115,8 @@ titanic.pivot_table('survived', ['sex', age], 'class')
 - `.str.get_dummies(SPLITCHAR)` is also a valid getdummies call
 
 # Time Series
-tbc p.188
+```python
+import numpy as np 
+date = np.array('2015-07-04', dtype=np.datetime64)
+date + np.arange(12)
+```
