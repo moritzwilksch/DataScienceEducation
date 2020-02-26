@@ -115,8 +115,18 @@ titanic.pivot_table('survived', ['sex', age], 'class')
 - `.str.get_dummies(SPLITCHAR)` is also a valid getdummies call
 
 # Time Series
+## Datetime Objects
+- available from different packages (vanilla python, numpy, pandas)
+
 ```python
 import numpy as np 
 date = np.array('2015-07-04', dtype=np.datetime64)
 date + np.arange(12)
 ```
+
+## Resampling
+- can be done using `.asfreq()` or `.resample()``
+    - `.asfrequ()` selects subset of datapoints
+    - `.resample()` aggregates multiple data points
+
+# Visualizing with Matplotlib
