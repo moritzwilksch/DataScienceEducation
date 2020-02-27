@@ -1,4 +1,8 @@
 # %%
+import matplotlib.pyplot as plt
+import re
+import seaborn as sns
+import pandas as pd
 import numpy as np
 
 
@@ -10,11 +14,11 @@ import numpy as np
 print("hi")
 
 # %%
-%%timeit
+% % timeit
 print("hi")
 # %%
-%%html
-<h1>Hi in HTML</h1>
+% % html
+<h1 > Hi in HTML < /h1 >
 
 # %% [markdown]
 # ## Running Shell Commands
@@ -38,7 +42,7 @@ print("hi")
 # ## Numpy Array Attributes
 
 # %%
-a = np.array([[1,2,5], [10, 20, 50]])
+a = np.array([[1, 2, 5], [10, 20, 50]])
 print(a.ndim)
 print(a.size)
 print(a.shape)
@@ -48,32 +52,36 @@ print(a[0, 2])
 # ## Slicing in all Dimensions
 
 # %%
-arr = np.array([[1,2,3],
-                [4,5,6]])
+arr = np.array([[1, 2, 3],
+                [4, 5, 6]])
 arr[::-1, ::-1]
 
 # %% [markdown]
 # # Pandas
 # %%
-import pandas as pd
-s = pd.Series([1,2,3])
+s = pd.Series([1, 2, 3])
 
 # %%
-import pandas as pd
-import numpy as np
-import seaborn as sns
 df = sns.load_dataset("titanic")
 f = pd.qcut(df.fare, 2)
 pd.pivot_table(data=df, index=["sex", f], margins=True)
-
-# %%
 np.percentile(df.age.dropna(), [10, 50, 90])
 
+# %% [markdown]
+# # Regex
 # %%
 s = "3 Tbsp Flour\n 2oz flour\n Sugar"
 d = list(s.split("\n"))
 d = [x.strip() for x in d]
 print(d)
-import re
 r = re.compile("[0-9]+")
 [(r.findall(x), x) for x in d]
+
+# %% [markdown]
+# # Plotting with Matplotlib
+# ## Figures and Axes
+# %%
+fig, ax = plt.subplots(1, 2, sharey=True)
+x = np.linspace(0, 10, 100)
+ax[0].plot(x, np.sin(x), linestyle="--")
+ax[1].plot(x, np.cos(x), linestyle=":")

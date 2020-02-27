@@ -130,3 +130,4 @@ date + np.arange(12)
     - `.resample()` aggregates multiple data points
 
 # Visualizing with Matplotlib
+tbc p224
