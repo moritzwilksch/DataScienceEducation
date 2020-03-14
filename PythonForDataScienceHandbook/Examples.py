@@ -17,8 +17,8 @@ print("hi")
 % % timeit
 print("hi")
 # %%
-% % html
-<h1 > Hi in HTML < /h1 >
+%%html
+<h1> Hi in HTML </h1>
 
 # %% [markdown]
 # ## Running Shell Commands
