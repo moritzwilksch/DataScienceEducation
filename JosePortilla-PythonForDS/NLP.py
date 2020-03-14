@@ -94,7 +94,9 @@ nn = keras.Sequential([
 ])
 
 nn.compile("nadam", "binary_crossentropy")
-history = nn.fit(xtrain, ytrain.map({"ham":0, "spam":1}), validation_data=(xtest, ytest.map({"ham":0, "spam":1})), epochs=50, use_multiprocessing=True,batch_size=128)
+
+# %%
+history = nn.fit(xtrain, ytrain.map({"ham":0, "spam":1}), validation_data=(xtest, ytest.map({"ham":0, "spam":1})), epochs=100, use_multiprocessing=True, batch_size=128)
 
 # %%
 plt.plot(history.history["val_loss"], label="test")
