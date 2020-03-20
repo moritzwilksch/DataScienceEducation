@@ -219,3 +219,21 @@ DELETE FROM employees
 WHERE
     emp_no = 999903;
 ```
+
+## Replacing NULL Values in Output
+```SQL
+SELECT 
+    dept_no, IFNULL(dept_name, "### not provided ###")
+FROM
+    departments_dup;
+```
+### COALESCE
+- Returns *first non-NULL value* from provided set
+```SQL
+SELECT 
+    dept_no,
+    dept_name,
+    COALESCE(dept_manager, dept_name, '#NA#') AS 'Manger'
+FROM
+    departments_dup;
+```
