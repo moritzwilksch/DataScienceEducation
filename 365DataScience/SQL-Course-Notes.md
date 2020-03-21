@@ -200,7 +200,7 @@ ALTER COLUMN number_of_complaints DROP DEFAULT;
 ALTER TABLE companies
 MODIFY company_name VARCHAR(255) NULL;
 ```
-
+=> MODIFY COLUMN does everything CHANGE COLUMN can, but without renaming the column!
 ## Missing Values
 - = `NULL``
 - 0 or None are user specified values
@@ -237,3 +237,17 @@ SELECT
 FROM
     departments_dup;
 ```
+
+## Duplicate Records
+- When joining, duplicates induce multiple additional output rows
+- *Solution*: Group by the columns that differs most (e.g. `emp_id`) to prevent duplicates!
+
+## Cross Join
+- Is the cartesian product of tables
+- combines ALL not just the matching records
+
+## UNION ALL
+- used to combine multiple SELECT Statements in a single output (i.e. unifying tables)
+- *includes duplicates*
+- `UNION` does not include duplicates
+- both can only be used on tables with the same structure, columns and datatypes
