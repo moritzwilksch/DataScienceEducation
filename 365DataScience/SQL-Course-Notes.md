@@ -251,3 +251,159 @@ FROM
 - *includes duplicates*
 - `UNION` does not include duplicates
 - both can only be used on tables with the same structure, columns and datatypes
+
+## Subqueries
+```SQL
+SELECT 
+    first_name, last_name
+FROM
+    employees
+WHERE
+    emp_no IN (SELECT 
+            dm.emp_no
+        FROM
+            dept_manager dm);
+
+-- OR USE EXISTS:
+
+SELECT 
+    e.first_name, e.last_name
+FROM
+    employees e
+WHERE
+    EXISTS( SELECT 
+            m.emp_no
+        FROM
+            dept_manager m
+        WHERE
+            e.emp_no = m.emp_no);
+```
+
+- Using `EXISTS` is quicker than `IN` as EXISTS only tests row values for existence where IN searches
+- **most (not all)** nested queries can be rewritten as JOINS 
+- JOINS are more efficient in general 
+
+## VIEWS
+- virtual temporary data tables retrieving information from base tables
+- e.g. if there are multiple entries of employees belonging to different departments, find *the lastest one* per employee
+```SQL
+CREATE OR REPLACE VIEW v_dep_emp_latest_date AS
+    SELECT 
+        emp_no, MAX(from_date) AS from_date, MAX(to_date) AS to_date
+    FROM
+        dept_emp
+    GROUP BY emp_no;
+```
+=> The view acts as a shortcut for writing the whole query and occupies no space as it is executed everytime on live data
+
+## Stored Routines
+- set of SQL statements that can be stored on the database server
+    - Stored procedures = procedures
+    - Function = user-defined or built-in (MAX, COUNT, ...)
+- in stored routines you **need a temporary line delimiter different from `;`**
+- at the end of a procedure one must **reset the delimiter to the standard `;`!**
+
+### Stored Procedures
+```SQL
+USE employees;
+DROP PROCEDURE IF EXISTS select_employees;
+
+DELIMITER $$
+CREATE PROCEDURE select_employees()
+BEGIN
+	SELECT * FROM employees LIMIT 1000;
+END$$
+DELIMITER ;
+
+
+CALL select_employees();
+```
+
+### With Input Parameters
+```SQL
+DELIMITER $$
+CREATE PROCEDURE emp_salary(IN p_emp_no INTEGER)
+BEGIN
+	SELECT e.first_name, e.last_name, s.salary, s.from_date, s.to_date
+    FROM employees e 
+		JOIN salaries s
+	ON s.emp_no = e.emp_no
+	WHERE e.emp_no = p_emp_no;
+END$$
+DELIMITER ;
+
+CALL emp_salary(10021);
+```
+
+### With Input and Output Parameters
+```SQL
+DELIMITER $$
+CREATE PROCEDURE emp_avg_salary_out(IN p_emp_no INTEGER, OUT p_avg_salary DECIMAL(10,2))
+BEGIN
+	SELECT AVG(s.salary) INTO p_avg_salary
+    FROM employees e 
+		JOIN salaries s
+	ON s.emp_no = e.emp_no
+	WHERE e.emp_no = p_emp_no;
+END$$
+DELIMITER ;
+
+-- Store it in result variable
+set @result = 0;
+call emp_avg_salary_out(10021, @result);
+select @result;
+```
+## Functions
+```SQL
+DELIMITER $$
+CREATE FUNCTION f_emp_avg_salary(p_emp_no INTEGER) RETURNS DECIMAL(10,2)
+DETERMINISTIC
+BEGIN
+DECLARE v_avg_salary DECIMAL(10,2);
+
+SELECT AVG(s.salary) INTO v_avg_salary
+FROM salaries s
+	JOIN employees e
+		ON s.emp_no = e.emp_no
+WHERE e.emp_no = p_emp_no;
+
+RETURN v_avg_salary;
+END$$
+DELIMITER ;
+
+SELECT F_EMP_AVG_SALARY(10021);
+-- you CAN NOT call a function
+```
+==> Functionions SHOULD NOT be used to update or insert data as these operations return nothing
+==> Functions can be used in SELECT statements, procedures CAN NOT!
+
+## Indexes
+- **Primary** and **Unique** Keys are indexes by default!
+
+```SQL
+-- Dropping the index
+ALTER TABLE employees
+DROP INDEX i_hire_date;
+
+-- Creating the index
+CREATE INDEX i_hire_date ON employees(hire_date);
+
+-- Selection is sped up from 0.15s to 0.0008s
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    hire_date > '2000-01-01';
+```
+
+## WITH for Subqueries
+```SQL
+-- better: use HAVING but this is just an example for WITH syntax
+WITH subquery (vorname, nachname, gehalt) AS
+	(SELECT e.first_name, e.last_name, AVG(s.salary)
+    FROM employees e JOIN salaries s ON e.emp_no = s.emp_no
+    GROUP BY e.emp_no)
+
+SELECT vorname, nachname, gehalt FROM subquery WHERE gehalt > 100000;
+```
