@@ -6,7 +6,7 @@ This repo contains notes on various books and courses about Data Science and Mac
 - [X] Python for Data Science Handbook
 - [X] Python Tricks - The Book
 - [X] Udemy: Jose Portilla Python for Data Science
-- [O] 365DataScience: SQL Module
+- [ ] 365DataScience: SQL Module
 - [ ] 365DataSciene: Specializations (Time Series, Risk Management, Customer Segmenting)
 - [ ] A/B-Testing by Googgle (https://classroom.udacity.com/courses/ud257)
 - [ ] A/B-Testing Tutorial (https://exp-platform.com/2017abtestingtutorial/)
