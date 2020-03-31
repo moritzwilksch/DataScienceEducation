@@ -36,3 +36,5 @@ avg_diff = np.mean(n2rvs - n1rvs)
 
 print(f"P(n2 > n1) = \t\t\t{np.sum(n2rvs > n1rvs)/SAMPLESIZE}")
 print(f"Average Difference (n2-n1) = \t{avg_diff}")
+
+# %%
