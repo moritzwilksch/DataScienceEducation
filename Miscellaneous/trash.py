@@ -94,5 +94,3 @@ def get_ad(n_iter = 1000):
 
 
 
-
-
