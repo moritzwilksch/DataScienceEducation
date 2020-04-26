@@ -39,3 +39,7 @@ new_model.fit(xtrain, ytrain)
 print(confusion_matrix(ytest, new_model.predict(xtest)))
 
 # Performance seems to be comparable for this simple example.
+
+
+#%%
+xtrain['fare'] = xtrain['fare'].astype('category')
