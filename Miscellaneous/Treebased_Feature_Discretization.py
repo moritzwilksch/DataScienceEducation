@@ -6,7 +6,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
-
+import numpy as np
 #%%
 # Load & Split Data
 df = sns.load_dataset('titanic').fillna(method='ffill').drop('alive', axis=1)
