@@ -19,6 +19,14 @@ sns.catplot(data=df, x='deck', y='survived', col='pclass', kind='bar')
 plt.show()
 
 #%%
+sns.barplot(data=df, x='sex', y='survived', hue='pclass')
+plt.show()
+
+#%%
+sns.catplot(data=df, col='sex', x='pclass', y='survived', kind='point', color='b')
+plt.show()
+
+#%%
 # GROUP BY EVERY CATEGORICAL FEATURE
 df = sns.load_dataset('tips')
 df['tippct'] = df.tip/df.total_bill
