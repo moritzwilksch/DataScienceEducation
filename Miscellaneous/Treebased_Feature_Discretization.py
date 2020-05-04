@@ -22,11 +22,17 @@ print(confusion_matrix(ytest, baseline.predict(xtest)))
 
 #%%
 # Train Tree
-fare_discretizer = DecisionTreeClassifier(max_leaf_nodes=6)
+fare_discretizer = DecisionTreeClassifier(max_leaf_nodes=5)
 fare_discretizer.fit(xtrain.fare.to_frame(), ytrain)
 
-xtrain['fare'] = fare_discretizer.predict_proba(xtrain['fare'].to_frame())
-xtest['fare'] = fare_discretizer.predict_proba(xtest['fare'].to_frame())
+xtrain['fare'] = fare_discretizer.predict_proba(xtrain['fare'].to_frame())[:, 0]
+xtest['fare'] = fare_discretizer.predict_proba(xtest['fare'].to_frame())[:, 0]
+
+xtrain['fare'] = xtrain['fare'].astype('category')
+xtest['fare'] = xtest['fare'].astype('category')
+
+xtrain = pd.get_dummies(xtrain)
+xtest = pd.get_dummies(xtest)
 
 from sklearn.tree import plot_tree
 plot_tree(fare_discretizer)
@@ -39,7 +45,3 @@ new_model.fit(xtrain, ytrain)
 print(confusion_matrix(ytest, new_model.predict(xtest)))
 
 # Performance seems to be comparable for this simple example.
-
-
-#%%
-xtrain['fare'] = xtrain['fare'].astype('category')
