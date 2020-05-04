@@ -2,7 +2,7 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-
+import numpy as np
 #%%
 # GROUP BY TARGET (if categorical)
 df = sns.load_dataset('titanic')
@@ -31,12 +31,12 @@ df = pd.read_csv('/Users/Moritz/Desktop/telecom_churn.csv')
 df.info()
 
 #%%
-from sklearn.tree import DecisionTreeClassifier
-
-dtc = DecisionTreeClassifier()
-dtc.fit(pd.get_dummies(df.drop('Churn', axis=1)), df.Churn)
-
+sns.pointplot(data=df, x='Churn', y='Total day minutes')
+plt.show()
 
 #%%
-sns.catplot(data=df, y='Churn', x='tdm_cat', kind='point', color='k')
+# BEST: Plotting churn rate for serveral bins of Total day minutes
+tmp = df.groupby(pd.cut(df['Total day minutes'], 10))['Churn'].mean()
+tmp.index = [x.right for x in tmp.index]
+sns.pointplot(x=tmp.index, y=tmp)
 plt.show()
