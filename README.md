@@ -11,7 +11,7 @@ This repo contains notes on various books and courses about Data Science and Mac
 - [X] A/B-Testing by Googgle (https://classroom.udacity.com/courses/ud257)
 - [X] A/B-Testing Tutorial (https://exp-platform.com/2017abtestingtutorial/)
 - [X] Think Stats
-- [ ] INTRODUCTORY STATISTICS AND ANALYTICS. A Resampling Perspective (Peter Bruce)
+- [X] INTRODUCTORY STATISTICS AND ANALYTICS. A Resampling Perspective (Peter Bruce)
 - [ ] Introduction to Machine Learning with python
 - [ ] Hands-on Machine Learning with Scikit-Learn and TensorFlow
 - [ ] Udemy: Soledad Galli - Feature Engineering
@@ -38,3 +38,10 @@ This repo contains notes on various books and courses about Data Science and Mac
 - [ ] Data Science From Scratch Book
 - [ ] The data science handbook by Cady, Field
 - [ ] Business Analytics The Science of Data-Driven Decision Making
+
+Other misc resources
+- [ ] Interpretable Machine Learning: https://christophm.github.io/interpretable-ml-book/
+- [ ] Automate the boring stuff
+- [ ] Designing with data
+- [ ] Experimentation works
+- [ ] Feature Engineering & Selection: https://bookdown.org/max/FES/intro-intro.html
