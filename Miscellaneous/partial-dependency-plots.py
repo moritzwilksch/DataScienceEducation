@@ -16,5 +16,4 @@ rf.fit(X, y)
 
 #%%
 from sklearn.inspection import plot_partial_dependence
-
-plot_partial_dependence(rf, X, features=X.columns, n_cols=len(X.columns))
+plot_partial_dependence(rf, X, features=['total_bill', 'sex_Male', 'day_Sun'])
