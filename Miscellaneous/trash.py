@@ -93,4 +93,27 @@ def get_ad(n_iter = 1000):
     return a_ad + b_ad
 
 
+#%%
+import scipy.stats as stats
+import numpy as np
+import matplotlib.pyplot as plt
+#%%
+def plot_dist(dist):
+    x = np.arange(0,1, 0.1)
+    try:
+        y = dist.pdf(x)
+    except AttributeError:
+        y = dist.pmf(x)
+    plt.plot(x, y)
+    plt.show()
 
+#%%
+prior = stats.beta(2,4)
+plot_dist(prior)
+d = [0.2, 0.1, 0.11, 0.16, 0.15]
+
+#%%
+ctr = [0.1, 0.2, 0.3]
+like = stats.beta(1,4).pdf(d)
+like = sum(like)
+prior.pdf(ctr) * like

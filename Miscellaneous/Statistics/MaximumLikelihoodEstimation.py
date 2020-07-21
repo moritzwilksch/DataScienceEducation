@@ -16,7 +16,7 @@ data = np.random.normal(1, 0.5, 20)
 
 def get_lik(data, mu, sd):
     """ Returns likelihood of observing *data* given *mu* and *sigma* of a normal distribution """
-
+    breakpoint()
     return np.prod(norm.pdf(data, loc=mu, scale=sd))
 
 
