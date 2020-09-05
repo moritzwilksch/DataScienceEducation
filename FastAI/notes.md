@@ -20,3 +20,12 @@ Summary: https://medium.com/@hiromi_suenaga/machine-learning-1-lesson-1-84a1dc2b
 
 ## Test-Validation Set Calibration
 - idea from kaggle: create serveral models and make sure that the performance of all of them on the VALIDATION and TEST set is as close to each other as possible. Subsequently, you have a validation set that represents test data nicely.
+- validation set size: use min. 22 samples per class (reason: t distribution approaches normal distribution)
+
+## Designing Data Products (Jeremy Howard)
+1. Defined Objective (What business goal do we want to achive?)
+2. Levers (What can we change?)
+3. Data (Which data can we collect?)ß
+4. Models (How do the Levers influence the objective)
+=> do not only measure predictive performance (AUC, ACC, ...) but quantify business effect
+
