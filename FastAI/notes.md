@@ -29,3 +29,6 @@ Summary: https://medium.com/@hiromi_suenaga/machine-learning-1-lesson-1-84a1dc2b
 4. Models (How do the Levers influence the objective)
 => do not only measure predictive performance (AUC, ACC, ...) but quantify business effect
 
+## Neural Nets
+- where possible, its best to treat things as categorical variables (with embeddings)
+- choose embedding size depending on complexity of relationship (Rule of Thumb: Cardinality/2)
