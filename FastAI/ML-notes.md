@@ -1,4 +1,4 @@
-# Fast.ai
+# Fast.ai - Machine Learning @USF
 - On structured data, start with tree ensembles (Random Forest or CatBoost), maybe try DL
 - Exception: many high-cardinality categorical features which are very important
 Summary: https://medium.com/@hiromi_suenaga/machine-learning-1-lesson-1-84a1dc2b5236
@@ -32,3 +32,7 @@ Summary: https://medium.com/@hiromi_suenaga/machine-learning-1-lesson-1-84a1dc2b
 ## Neural Nets
 - where possible, its best to treat things as categorical variables (with embeddings)
 - choose embedding size depending on complexity of relationship (Rule of Thumb: Cardinality/2)
+
+## Model Agnostic Interpretation
+- Shuffle each column and record changes in accuarcy
+- Use partial dependence plots
