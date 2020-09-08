@@ -87,12 +87,24 @@ pdp_size = pdp.pdp_isolate(model=wrapped,
                           model_features=x_cols,
                           feature='size', num_grid_points=6)
 
+pdp_sex = pdp.pdp_isolate(model=wrapped,
+                          dataset=pd.DataFrame(xtrain, columns=x_cols),
+                          model_features=x_cols,
+                          feature=['sex_Male', 'sex_Female'])
+
+pdp_smoker = pdp.pdp_isolate(model=wrapped,
+                          dataset=pd.DataFrame(xtrain, columns=x_cols),
+                          model_features=x_cols,
+                          feature=['smoker_No', 'smoker_Yes'])
+
 pdp_bill = pdp.pdp_isolate(model=wrapped,
                           dataset=pd.DataFrame(xtrain, columns=x_cols),
                           model_features=x_cols,
                           feature='total_bill', num_grid_points=50)
 
 
-pdp.pdp_plot(pdp_day, 'days', )
-pdp.pdp_plot(pdp_size, 'size', )
-pdp.pdp_plot(pdp_bill, 'total bill', )
+pdp.pdp_plot(pdp_day, 'days', plot_lines=True,)
+pdp.pdp_plot(pdp_size, 'size', plot_lines=True,)
+pdp.pdp_plot(pdp_bill, 'total bill', plot_lines=True,)
+pdp.pdp_plot(pdp_sex, 'sex', plot_lines=True,)
+pdp.pdp_plot(pdp_smoker, 'smoker', plot_lines=True,)
