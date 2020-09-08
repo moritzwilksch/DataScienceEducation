@@ -49,3 +49,5 @@ for colidx in range(xtrain.shape[1]):
     diffs.append(shuff_metric - start_metric)
 
 pd.Series(diffs, index=pd.get_dummies(df).drop('tip', axis=1).columns).plot(kind='barh')
+
+#%%
