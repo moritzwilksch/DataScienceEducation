@@ -1,6 +1,7 @@
 # %%
 # This code uses a CALLBACK, NOT the lr_finder pip package!
 
+from keras import layers
 from pdpbox import pdp, get_dataset, info_plots
 from keras.wrappers.scikit_learn import KerasRegressor
 from lr_finder import LRFinder
@@ -11,6 +12,7 @@ import numpy as np
 import keras
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
+from sklearn.preprocessing import StandardScaler
 tf.random.set_seed(42)
 seed(42)
 
@@ -21,10 +23,15 @@ xtrain, xval, ytrain, yval = train_test_split(
 
 x_cols = xtrain.columns
 
-xtrain = xtrain.values
+ss = StandardScaler()
+cols_to_scale = ['total_bill', 'size']
+xtrain[cols_to_scale] = ss.fit_transform(xtrain[cols_to_scale])
 ytrain = ytrain.values
-xval = xval.values
+
+xval[cols_to_scale] = ss.transform(xval[cols_to_scale])
 yval = yval.values
+
+xtrain, xval = xtrain.values, xval.values
 
 # %%
 nn = keras.Sequential([

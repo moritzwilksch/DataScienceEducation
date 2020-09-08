@@ -34,5 +34,5 @@ Summary: https://medium.com/@hiromi_suenaga/machine-learning-1-lesson-1-84a1dc2b
 - choose embedding size depending on complexity of relationship (Rule of Thumb: Cardinality/2)
 
 ## Model Agnostic Interpretation
-- Shuffle each column and record changes in accuarcy
-- Use partial dependence plots
+- Shuffle each column and record changes in accuarcy (for now, without retraining the model)
+- Use partial dependence plots (pdpbox, use keras' sklearn wrapper)
