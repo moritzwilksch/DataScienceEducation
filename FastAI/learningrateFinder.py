@@ -37,3 +37,15 @@ nn.fit(xtrain, ytrain, validation_data=(xval, yval), epochs=5, batch_size=32, ca
 #%%
 h = nn.fit(xtrain, ytrain, validation_data=(xval, yval), epochs=25, batch_size=32)
 pd.DataFrame({'train': h.history['loss'], 'val': h.history['val_loss']}).plot()
+
+#%%
+# Feature Importance
+start_metric = nn.evaluate(xtrain, ytrain)[-1]
+diffs = []
+for colidx in range(xtrain.shape[1]):
+    shuffled = xtrain.copy()
+    np.random.shuffle(shuffled[:, colidx])
+    shuff_metric = nn.evaluate(shuffled, ytrain)[-1]
+    diffs.append(shuff_metric - start_metric)
+
+pd.Series(diffs, index=pd.get_dummies(df).drop('tip', axis=1).columns).plot(kind='barh')
