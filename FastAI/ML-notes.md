@@ -36,3 +36,10 @@ Summary: https://medium.com/@hiromi_suenaga/machine-learning-1-lesson-1-84a1dc2b
 ## Model Agnostic Interpretation
 - Shuffle each column and record changes in accuarcy (for now, without retraining the model)
 - Use partial dependence plots (pdpbox, use keras' sklearn wrapper)
+
+## Learning Rate Finder
+- Give plain SGD a try! Otherwise Adam.
+- for keras, use CALLBACK (https://github.com/WittmannF/LRFinder), not the package! 
+- optimial learning rate lies around the steepest point (somwhere between steepest point and minimum point/10)
+- use a CYCLICAL learning Rate (see keras callback: https://github.com/bckenstler/CLR)
+    - min_lr approx.= max_lr/3 ; max_lr = where model does not become better, optimal rate is somewhat less

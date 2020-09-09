@@ -1,6 +1,7 @@
 # %%
 # This code uses a CALLBACK, NOT the lr_finder pip package!
 
+from gc import callbacks
 from pdpbox import pdp, get_dataset, info_plots
 from tensorflow.keras.wrappers.scikit_learn import KerasRegressor
 from lr_finder import LRFinder
@@ -39,7 +40,7 @@ nn = keras.Sequential([
     keras.layers.Dense(units=1, activation='linear'),
 ])
 
-nn.compile(keras.optimizers.Adam(lr=0.001), 'MAE', metrics=['MAE'])
+nn.compile(keras.optimizers.SGD(lr=0.001), 'MAE', metrics=['MAE'])
 nn.build((None, xtrain.shape[1]))
 # Find optimal learning rate. Use the one with the steepest descent of loss (not minimum)
 lrf = LRFinder(0.01, 1)
@@ -47,8 +48,10 @@ nn.fit(xtrain, ytrain, validation_data=(xval, yval),
        epochs=5, batch_size=32, callbacks=[lrf])
 
 # %%
+from CLRCallback import CyclicLR
+clr = CyclicLR((10**-1)/3, 10**-1)
 h = nn.fit(xtrain, ytrain, validation_data=(
-    xval, yval), epochs=25, batch_size=32)
+    xval, yval), epochs=25, batch_size=32, callbacks=[clr])
 pd.DataFrame({'train': h.history['loss'], 'val': h.history['val_loss']}).plot()
 
 # %%
