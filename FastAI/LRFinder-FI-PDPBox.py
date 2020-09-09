@@ -1,15 +1,14 @@
 # %%
 # This code uses a CALLBACK, NOT the lr_finder pip package!
 
-from keras import layers
 from pdpbox import pdp, get_dataset, info_plots
-from keras.wrappers.scikit_learn import KerasRegressor
+from tensorflow.keras.wrappers.scikit_learn import KerasRegressor
 from lr_finder import LRFinder
 from numpy.random import seed
 import pandas as pd
 import seaborn as sns
 import numpy as np
-import keras
+from tensorflow import keras
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
 from sklearn.preprocessing import StandardScaler
@@ -36,14 +35,14 @@ xtrain, xval = xtrain.values, xval.values
 # %%
 nn = keras.Sequential([
     keras.layers.Dense(units=15, activation='relu'),
-    keras.layers.Dense(units=5, activation='relu'),
+    keras.layers.Dense(units=15, activation='relu'),
     keras.layers.Dense(units=1, activation='linear'),
 ])
 
-nn.compile(keras.optimizers.Adam(lr=0.01), 'MAE', metrics=['MAE'])
-
+nn.compile(keras.optimizers.Adam(lr=0.001), 'MAE', metrics=['MAE'])
+nn.build((None, xtrain.shape[1]))
 # Find optimal learning rate. Use the one with the steepest descent of loss (not minimum)
-lrf = LRFinder(0.0001, 1)
+lrf = LRFinder(0.01, 1)
 nn.fit(xtrain, ytrain, validation_data=(xval, yval),
        epochs=5, batch_size=32, callbacks=[lrf])
 
