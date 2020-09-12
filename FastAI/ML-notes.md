@@ -43,3 +43,6 @@ Summary: https://medium.com/@hiromi_suenaga/machine-learning-1-lesson-1-84a1dc2b
 - optimial learning rate lies around the steepest point (somwhere between steepest point and minimum point/10)
 - use a CYCLICAL learning Rate (see keras callback: https://github.com/bckenstler/CLR)
     - min_lr approx.= max_lr/3 ; max_lr = where model does not become better, optimal rate is somewhat less
+
+## Training Neural Nets
+- instead of using early stopping, train for long, observe the No. of epochs after which the best performance is achieve, then retrain from scratch for fewer epochs
