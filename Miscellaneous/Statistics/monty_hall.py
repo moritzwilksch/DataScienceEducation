@@ -2,17 +2,6 @@
 import numpy as np
 
 #%%
-prizes = np.random.randint(0, 3, 10)
-prizes = np.eye(3)[prizes]
-
-first_choice = np.random.randint(0, 3, 10)
-
-mod_choice = np.full((10, 1), -1)
-#mod_choices[]
-# second_choice = first_choice.copy()
-
-
-#%%
 def generate(n=1000, stay=True):
     results = []
     for i in range(n):
