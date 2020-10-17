@@ -2,11 +2,6 @@
 import numpy as np
 
 #%%
-def generate(n=10_000, stay=True):
-    prizes = np.random.randint(0, 3, n)
-    prizes = np.eye(3)[prizes]
-
-#%%
 prizes = np.random.randint(0, 3, 10)
 prizes = np.eye(3)[prizes]
 
