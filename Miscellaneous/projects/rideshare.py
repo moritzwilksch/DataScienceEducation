@@ -112,3 +112,9 @@ plt.barh(y=plotdf.index, width=plotdf)
 #%%
 
 plt.hist(clean["trip_miles"], bins=100, log=False)
+
+#%%
+plotdf = clean.groupby(clean["pickup_datetime"].dt.date)["driver_pay"].mean()
+fig, ax = plt.subplots(figsize=(15, 5))
+# sns.lineplot(data=clean, x="pickup_datetime", y="driver_pay", ci=None, ax=ax)
+plotdf.to_frame().plot(ax=ax )
