@@ -1,3 +1,5 @@
 /.vscode/
 /JosePortilla-PythonForDS/Refactored_Py_DS_ML_Bootcamp-master/
 data/*
+ML-Basics/frames/*
+*.gif
